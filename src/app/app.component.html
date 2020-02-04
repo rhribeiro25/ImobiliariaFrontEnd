@@ -1,0 +1,42 @@
+
+<div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start center" fxLayoutAlign.gt-sm="center start" mat-bold
+class="border border-primary">
+  <div fxFlex.gt-sm="85%">
+    <mat-toolbar color="primary" fxLayout.gt-sm="row">
+      <!-- Menu -->
+      <div fxFlex.gt-sm="10%">
+        <mat-menu #rootMenu="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="subMenu">Power</button>
+          <button mat-menu-item>System settings</button>
+        </mat-menu>
+        <mat-menu #subMenu="matMenu">
+          <button mat-menu-item>Shut down</button>
+          <button mat-menu-item>Restart</button>
+          <button mat-menu-item>Hibernate</button>
+        </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="rootMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+      <!-- Title -->
+      <div fxFlex.gt-sm="80%">
+        <mat-toolbar-row fxLayoutAlign="center center">
+            <span>IMOBILIÁRIA</span >
+        </mat-toolbar-row>
+      </div>
+      <div fxFlex.gt-sm="10%"></div>
+    </mat-toolbar>
+    <!-- tabs -->
+    <mat-tab-group class="mat-elevation-z8">
+      <mat-tab label="Locador">
+        <app-person></app-person>
+      </mat-tab>
+      <mat-tab label="Locatário">
+        <app-person></app-person>
+      </mat-tab>
+      <mat-tab label="Testemunha">
+        <app-person></app-person>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
