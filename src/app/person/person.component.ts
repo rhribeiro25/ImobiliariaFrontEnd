@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { PersonService } from '../service/person.service';
+import { Person } from '../model/person';
 
 /**
  * @title Table with pagination
@@ -13,14 +15,38 @@ import {MatTableDataSource} from '@angular/material/table';
 export class PersonComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  person: Person;
+  people: Person[];
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor() { }
+  constructor(private personService: PersonService) { }
   
   ngOnInit() {
+    this.personService.get()
+    .subscribe((ps) => this.people = ps);
+
     this.dataSource.paginator = this.paginator;
   }
+
+  save(){
+    this.personService.add(this.person)
+    .subscribe(
+      (p) => {
+        console.log(p);
+        this.clearFields();
+      },
+      (err) => console.log(err))
+  }
+
+  clearFields(){
+    this.person = null;
+  }
+
+  cancel(){
+
+  }
+
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
