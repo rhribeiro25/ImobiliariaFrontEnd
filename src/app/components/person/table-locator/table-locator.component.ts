@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import { PersonService } from '../service/person.service';
-import { Person } from '../model/person';
+import { PersonService } from '../../../services/person.service';
+import { Person } from '../../../models/person';
 import { MatSnackBar } from '@angular/material';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,17 +11,17 @@ import { takeUntil } from 'rxjs/operators';
  * @title Table with pagination
  */
 @Component({
-  selector: 'app-person',
-  templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+  selector: 'app-table-locator',
+  templateUrl: './table-locator.component.html',
+  styleUrls: ['./table-locator.component.css']
 })
-export class PersonComponent implements OnInit {
-  
+export class TableLocatorComponent implements OnInit {
+
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   person: Person;
   personEdited: Person = null;
-  people: Person[];
+  people: Person[] = [];
   displayedColumns: string[] = ['Nome', 'Sobrenome'];
   dataSource = new MatTableDataSource<Person>(this.people);
   private unsubscribe$: Subject<any> = new Subject();
@@ -98,4 +98,5 @@ export class PersonComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
 }
