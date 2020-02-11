@@ -1,7 +1,8 @@
 import { TypePerson } from '../enums/type-person.enum';
 import { AvailabilityProperty } from '../enums/availability-property.enum';
+import { Generic } from './generic';
 
-export interface PropertyDetail {
+export interface PropertyDetail extends Generic {
         /* GENERAL */
         area: Number;
         bedrooms: Number;
