@@ -1,10 +1,11 @@
 import { Generic } from './generic';
 
 export interface Address extends Generic {
-    street: String;
-    neighborhoods: String;
-    city: String;
-    number: String;
     cep: String;
+    street: String;
+    number: String;
     complement: String;
+    neighborhood: String;
+    city: String;
+    state: String;
 }

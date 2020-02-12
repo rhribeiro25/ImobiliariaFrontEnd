@@ -22,7 +22,7 @@ export class TableLocatorComponent implements OnInit {
   person: Person;
   personEdited: Person = null;
   people: Person[] = [];
-  displayedColumns: string[] = ['Nome', 'Sobrenome'];
+  displayedColumns: string[] = ['name', 'phone', 'cell', 'email', 'actions'];
   dataSource = new MatTableDataSource<Person>(this.people);
   private unsubscribe$: Subject<any> = new Subject();
 

@@ -22,7 +22,7 @@ export class TableGuarantorComponent implements OnInit {
   person: Person;
   personEdited: Person = null;
   people: Person[] = [];
-  displayedColumns: string[] = ['Nome', 'Sobrenome'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'actions'];
   dataSource = new MatTableDataSource<Person>(this.people);
   private unsubscribe$: Subject<any> = new Subject();
 
