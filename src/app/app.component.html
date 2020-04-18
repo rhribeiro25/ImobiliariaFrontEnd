@@ -6,13 +6,22 @@ class="border border-primary">
       <!-- Menu -->
       <div fxFlex.gt-sm="10%">
         <mat-menu #rootMenu="matMenu">
-          <button mat-menu-item [matMenuTriggerFor]="subMenu">Power</button>
-          <button mat-menu-item>System settings</button>
+          <button mat-menu-item routerLink="/wizard-contract">Assistente de contrato</button>
+          <button mat-menu-item [matMenuTriggerFor]="peopleManager">Gerenciar Pessoas</button>
+          <button mat-menu-item [matMenuTriggerFor]="propertiesManager">Gerenciar Imóveis</button>
+          <button mat-menu-item [matMenuTriggerFor]="contractsManager">Gerenciar Contrato</button>
         </mat-menu>
-        <mat-menu #subMenu="matMenu">
-          <button mat-menu-item>Shut down</button>
-          <button mat-menu-item>Restart</button>
-          <button mat-menu-item>Hibernate</button>
+        <mat-menu #peopleManager="matMenu">
+          <button mat-menu-item routerLink="/list-people">Listar</button>
+          <button mat-menu-item routerLink="/add-edit-person">Adicionar</button>
+        </mat-menu>
+        <mat-menu #propertiesManager="matMenu">
+          <button mat-menu-item routerLink="/list-properties">Listar</button>
+          <button mat-menu-item routerLink="/add-edit-property">Adicionar</button>
+        </mat-menu>
+        <mat-menu #contractsManager="matMenu">
+          <button mat-menu-item routerLink="/list-contracts">Listar</button>
+          <button mat-menu-item routerLink="/add-edit-contract">Adicionar</button>
         </mat-menu>
         <button mat-icon-button [matMenuTriggerFor]="rootMenu">
           <mat-icon>more_vert</mat-icon>
@@ -26,17 +35,6 @@ class="border border-primary">
       </div>
       <div fxFlex.gt-sm="10%"></div>
     </mat-toolbar>
-    <!-- tabs -->
-    <mat-tab-group class="mat-elevation-z8">
-      <mat-tab label="Locador">
-        <app-person></app-person>
-      </mat-tab>
-      <mat-tab label="Locatário">
-        <app-person></app-person>
-      </mat-tab>
-      <mat-tab label="Testemunha">
-        <app-person></app-person>
-      </mat-tab>
-    </mat-tab-group>
+    <router-outlet></router-outlet>
   </div>
 </div>
