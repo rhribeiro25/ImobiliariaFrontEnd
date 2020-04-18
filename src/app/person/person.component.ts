@@ -17,6 +17,7 @@ export class PersonComponent implements OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   person: Person;
   people: Person[];
+  isAddMode: boolean;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -40,7 +41,12 @@ export class PersonComponent implements OnInit {
   }
 
   clearFields(){
-    this.person = null;
+    this.person.type = null;
+    this.person.firstName = "";
+    this.person.lastName = "";
+    this.person.birthday = null;
+    this.person.motherName = "";
+    this.person.fatherName = "";
   }
 
   cancel(){
